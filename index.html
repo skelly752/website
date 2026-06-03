@@ -95,7 +95,6 @@
         transform: scale(0.96);
     }
 
-    /* YOUTUBE */
     .yt {
         background: linear-gradient(135deg, #ff2d2d, #c40000);
         box-shadow: 0 10px 25px rgba(255,0,0,0.25);
@@ -111,7 +110,6 @@
         height: 26px;
     }
 
-    /* DROPDOWNS */
     .dropdown {
         width: 100%;
         display: flex;
@@ -119,7 +117,6 @@
         align-items: center;
     }
 
-    /* ✅ ONLY CHANGE: GAP ADDED HERE */
     .dropdown:first-of-type {
         margin-top: 25px;
     }
@@ -134,12 +131,17 @@
         box-shadow: 0 10px 25px rgba(46,204,113,0.25);
     }
 
+    .staff-btn {
+        background: linear-gradient(135deg, #ff9800, #ff6d00);
+        box-shadow: 0 10px 25px rgba(255,140,0,0.25);
+    }
+
     .credits-btn:hover,
-    .about-btn:hover {
+    .about-btn:hover,
+    .staff-btn:hover {
         transform: translateY(-4px);
     }
 
-    /* FIXED DROPDOWN FLOW */
     .dropdown-content {
         width: min(420px, 90vw);
         background: rgba(25,25,25,0.9);
@@ -159,9 +161,10 @@
         margin-top: 0;
     }
 
+    /* FIXED ONLY HERE */
     .dropdown-content.show {
         opacity: 1;
-        max-height: 200px;
+        max-height: 500px;
         transform: scaleY(1);
         margin-top: 10px;
     }
@@ -211,6 +214,27 @@
     </div>
 
     <div class="dropdown">
+        <button class="btn staff-btn" onclick="toggleStaff()">
+            🔨Our staff
+        </button>
+
+        <div id="staffMenu" class="dropdown-content">
+            <strong>👑The Owner</strong><br>
+            skellyAC<br><br>
+
+            <strong>🛠️Co-Owner</strong><br>
+            FZ<br><br>
+
+            <strong>⚒️Head Moderators</strong><br>
+            Boomstudio<br>
+            Jethzibe<br><br>
+
+            <strong>🔨Moderators</strong><br>
+            Great Ape Zero Luza
+        </div>
+    </div>
+
+    <div class="dropdown">
         <button class="btn credits-btn" onclick="toggleCredits()">
             📃 Credits
         </button>
@@ -235,10 +259,15 @@ function toggleAbout() {
     document.getElementById("aboutMenu").classList.toggle("show");
 }
 
+function toggleStaff() {
+    document.getElementById("staffMenu").classList.toggle("show");
+}
+
 window.addEventListener("click", function(e) {
     if (!e.target.closest(".dropdown")) {
         document.getElementById("creditsMenu").classList.remove("show");
         document.getElementById("aboutMenu").classList.remove("show");
+        document.getElementById("staffMenu").classList.remove("show");
     }
 });
 </script>
