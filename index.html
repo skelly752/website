@@ -8,22 +8,45 @@
     <style>
         body {
             margin: 0;
-            background: #111; /* darker blackish background */
+            background: #111;
             font-family: "Comic Sans MS", "Trebuchet MS", sans-serif;
-            height: 100vh;
+            min-height: 100vh;
             color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            display: block;
+            width: 200px;
+            margin: 20px auto 10px auto;
+            border-radius: 20px;
         }
 
         h1 {
             text-align: center;
-            margin-top: 25px;
-            font-size: 2.2rem;
+            margin-top: 0;
+            font-size: 3rem;
+            font-weight: 900;
             color: #ffffff;
-            text-shadow: 2px 2px 8px rgba(255,255,255,0.2);
+            text-shadow: 0 0 15px rgba(255,255,255,0.4);
+        }
+
+        .arrow {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #777;
+            margin-top: 5px;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
         }
 
         .button-container {
-            height: calc(100vh - 100px);
+            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -38,7 +61,9 @@
         .channel-btn {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 12px;
+            width: 380px;
             padding: 18px 36px;
             font-size: 22px;
             font-weight: bold;
@@ -61,20 +86,20 @@
             height: 28px;
         }
 
-        /* Credits Dropdown */
         .dropdown {
             position: relative;
             display: inline-block;
         }
 
         .credits-btn {
+            width: 380px;
             background: #1e90ff;
             color: white;
-            padding: 15px 30px;
-            font-size: 20px;
+            padding: 18px 36px;
+            font-size: 22px;
             font-weight: bold;
             border: none;
-            border-radius: 30px;
+            border-radius: 50px;
             cursor: pointer;
             transition: 0.2s;
             box-shadow: 0 0 15px rgba(30, 144, 255, 0.5);
@@ -91,7 +116,7 @@
             top: 110%;
             left: 50%;
             transform: translateX(-50%);
-            min-width: 280px;
+            min-width: 350px;
             background: #222;
             border-radius: 15px;
             padding: 15px;
@@ -104,37 +129,50 @@
         .show {
             display: block;
         }
+
+        footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+            padding: 15px;
+        }
     </style>
 </head>
+
 <body>
 
-    <h1>🎉 Welcome to the Beta Version of Skelly Company's Website! 🎉</h1>
+    <img src="IMG_3603.PNG" alt="Skelly Company Logo" class="logo">
+
+    <h1>💀SKELLY COMPANY💀</h1>
+
+    <div class="arrow">↓</div>
 
     <div class="button-container">
 
         <a href="https://www.youtube.com/@real_skellyAC" target="_blank" rel="noopener noreferrer">
             <button class="channel-btn">
-
                 <svg class="yt-icon" viewBox="0 0 24 24" fill="white">
                     <path d="M23.498 6.186a2.997 2.997 0 0 0-2.112-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.386.566A2.997 2.997 0 0 0 .502 6.186A31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .502 5.814 2.997 2.997 0 0 0 2.112 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.386-.566a2.997 2.997 0 0 0 2.112-2.12A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.502-5.814zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/>
                 </svg>
-
                 Check out my channel!
             </button>
         </a>
 
-        <!-- Credits Dropdown -->
         <div class="dropdown">
             <button class="credits-btn" onclick="toggleCredits()">
                 📃 Credits
             </button>
 
             <div id="creditsMenu" class="dropdown-content">
-                Credits go to skelly and the help of AI.
+                Credits go to <strong>Skelly</strong> and the help of <strong>AI</strong>.
             </div>
         </div>
 
     </div>
+
+    <footer>
+        © Skelly Company 2026 — All Rights Reserved
+    </footer>
 
     <script>
         function toggleCredits() {
@@ -142,11 +180,8 @@
         }
 
         window.onclick = function(event) {
-            if (!event.target.matches('.credits-btn')) {
-                let dropdowns = document.getElementsByClassName("dropdown-content");
-                for (let i = 0; i < dropdowns.length; i++) {
-                    dropdowns[i].classList.remove('show');
-                }
+            if (!event.target.closest('.credits-btn')) {
+                document.getElementById("creditsMenu").classList.remove("show");
             }
         }
     </script>
